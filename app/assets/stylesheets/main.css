@@ -41,20 +41,16 @@
   margin:0 auto;
   width:100%;
   height:400px;
-  position:fixed;
-  bottom:0px;
+  position:absolute;
+  bottom:0;
 }
 #footer-img{
   height:100%;
-  width:60%
+  width:80%;
 }
 
 /*__tumble weed animation_____________________________*/
 
-#footer-bg {
-  position: relative;
-  overflow: hidden;
-}
 
 #footer-bg .tumbleweed {
   position:absolute;
@@ -121,23 +117,17 @@
 body {
   background-color: #0077b5;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  color:$white;
-  height:100%;
+  color:white;
+  max-height:850px;
   text-align:center;
   font-size:18px;
+  height: 100%;
 }
 
 .wrappper{
   @include clear;
   width:100%;
   margin:0 auto;
-}
-
-
-canvas{
-  color:$white;
-  border: $white dashed 2px;
-  padding:15px;
 }
 
 h1, h2, h3 {
@@ -220,15 +210,6 @@ p{
   font-size:1.6em;
 }
 
-.active {
-  @include opacity;
-  cursor:default;
-
-  &:hover{
-      @include fade;
-      @include opacity;
-    }
-}
 #letter{
 	border:solid white 2px;
 	border-radius: 3px;
@@ -240,26 +221,11 @@ p{
   text-align:center;
   display:block;
 }
-
-button{
-  @include corners (5px);
-  background:$base-color;
-  color:$white;
-  border: solid 1px $white;
-  text-decoration:none;
-  cursor:pointer;
-  font-size:1.2em;
-  padding:18px 10px;
-  width:180px;
-  margin: 10px;
-  outline: none;
-
-    &:hover{
-      @include transition;
-      background:$white;
-      border: solid 1px $white;
-      color:$base-color;
-    }
+#my-word{
+  padding-right:100px;
+}
+#my-word li{
+  font-size: 50px;
 }
 
 @media (max-width: 767px) {
@@ -322,10 +288,10 @@ button{
   }
 }
 
-#footer-bg {
+/*#footer-bg {
   position: relative;
-  height: 400px;
-}
+  height: 200px;
+}*/
 
 .launcher {
   position: absolute;
