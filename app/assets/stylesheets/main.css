@@ -1,8 +1,12 @@
 /*linkedIn blue #0077b5*/
 #title{
- height:50px;
+ background-image: url('/assets/logo2.png');
+ background-size: 810px 200px;
+ background-repeat: no-repeat;
+ width:100%;
+ height:220px;
  margin:auto;
- margin-top:50px;
+ /*margin-top:50px;*/
  color:#FFF;
  font-size:36px;
  width:800px;
