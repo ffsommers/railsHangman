@@ -24,7 +24,11 @@
  color: white;
  text-align: left;
 }
+#play{
+  width:100%;
+  text-align: center;
 
+}
 #imgHolder{
  margin-left:250px;
  width:75px;
