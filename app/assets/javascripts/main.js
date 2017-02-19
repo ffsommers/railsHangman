@@ -163,7 +163,9 @@ function getWords(settings) {
 		var showLives = document.getElementById("mylives");
     showLives.innerHTML = "You have " + lives + " incorrect guesses left.";
     if (lives < 1 && words.length === 0) {
-      document.body.innerHTML = '';
+			showLives.innerHTML = "Game Over";
+			$(".tumbleweed").css("animation-play-state", "running")
+			$("#reset").show();
     }
      if (lives < 1) {
       showLives.innerHTML = "Game Over";

@@ -25,27 +25,99 @@
 }
 
 #imgHolder{
- margin-left:30px;
+ margin-left:250px;
  width:75px;
  float:left;
  overflow:hidden;
+ transform: translateY(-40%);
 }
 
 #imgHolder img{
- position:relative;}
+ position:relative;
+  top:10px;
 
+ }
 #footer-bg{
-  margin:auto;
-  background-image: url('/assets/footer_bg.png');
+  margin:0 auto;
+  /*background-image: url('/assets/footer_bg.png');
   background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
   width:100%;
-  height:300px;
+  height:400px;
   position:fixed;
   bottom:0px;
 }
-/*_______________________________*/
+#footer-img{
+  height:100%;
+  width:60%
+}
+/*__tumble weed animation_____________________________*/
 
+#footer-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+#footer-bg .tumbleweed {
+  position:absolute;
+  left: -5rem;
+  background: url(/assets/tumbleweed.png) no-repeat center;
+  background-size: cover;
+  width: 5rem;
+  height: 5rem;
+  animation: jumping 1.5s infinite, rolling 5s linear infinite, rotating 2s linear infinite;
+  animation-play-state: paused;
+
+}
+.tumbleweed:nth-child(2) {
+  animation-delay: 2.5s;
+}
+.tumbleweed:nth-child(3) {
+  animation-delay: 4s;
+}
+
+@keyframes jumping {
+  0% {
+      top: 12rem;
+      animation-timing-function: ease-in;
+  }
+  25% {
+      top: 15rem;
+      animation-timing-function: ease-out;
+  }
+  50% {
+      top: 13rem;
+      animation-timing-function: ease-in;
+  }
+  75% {
+      top: 15rem;
+      animation-timing-function: ease-out;
+  }
+  100% {
+      top: 12rem;
+      animation-timing-function: ease-in;
+  }
+}
+
+@keyframes rolling {
+  0% {
+      left: -5rem;
+  }
+  100% {
+      left: 100%;
+  }
+}
+
+@keyframes rotating {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+/*________________________________*/
 
 
 body {
