@@ -1,20 +1,40 @@
-
+/*linkedIn blue #0077b5*/
+#title{
+ height:50px;
+ margin:auto;
+ margin-top:50px;
+ color:#FFF;
+ font-size:36px;
+ width:800px;
+ border-bottom:solid white 1px;
+}
+.spacer{height:30px;}
 
 #formContainer{
  width: 400px;
- border:solid orange 4px;
+ border:solid white 2px;
  border-radius: 4px;
  padding: 10px;
  margin: 0 auto;
- background-color: gray;
+ background-color: #05547f;
+ color: white;
 }
 
+#imgHolder{
+ margin-left:30px;
+ width:75px;
+ float:left;
+ overflow:hidden;
+}
+
+#imgHolder img{
+ position:relative;}
 /*_______________________________*/
 
 
 
 body {
-  background-color: grey;
+  background-color: #0077b5;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   color:$white;
   height:100%;
@@ -82,7 +102,7 @@ p{
 #wordsGuessed {
 	width:350px;
 	height: 100px;
-	border: solid orange 2px;
+	border: solid white 2px;
 	border-radius: 8px;
 	margin: 0 auto;
 }
@@ -125,10 +145,10 @@ p{
     }
 }
 #letter{
-	border:solid orange 2px;
+	border:solid white 2px;
 	border-radius: 3px;
-	background-color: orange;
-	color:gray;
+	background-color: #05547f;
+	color:white;
 }
 #mylives{
   font-size:1.6em;

@@ -3,8 +3,12 @@ $(document).ready(function(){
 		difficulty: 1,
 		rounds: 1
 	};
-    $("#wordsGuessed").css("display", "none");
+
+	$(document).on("keyup",handleKeyUp);  //for user input via keyboard
+
+  $("#wordsGuessed").css("display", "none");
  	$("#reset").css("display", "none");
+
 	$("#play").on("click", function(){
     	$("#formContainer").css("display", "none");
     	var gameDifficulty = $("#difficulty option:selected").val();
@@ -40,21 +44,47 @@ function startSpeech() {
   		.map(result => result.transcript)
   		.join("")
 
-  		p.textContent = transcript;
   		if (transcript.includes('letter')){
-  			console.log(transcript);
+				var letter = transcript.slice(-1)
+				checkBySpeech(letter)
   		}
-
+			// prints everything thats said to console.
+		 console.log(transcript);
   });
   recognition.addEventListener('end', recognition.start);
   recognition.start();
 }
 
+// function for using keyboard as input
+function handleKeyUp(event) {
+	if(event.keyCode>64 && event.keyCode<91){
+		var guess=String.fromCharCode(event.keyCode).toLowerCase();
+
+ 		for (var i = 0; i < word.length; i++) {
+ 			if (word[i] === guess) {
+ 				guesses[i].innerHTML = guess;
+ 				counter += 1;
+ 			}
+ 		}
+ 		var j = (word.indexOf(guess));
+ 		if (j === -1) {
+ 			lives -= 1;
+ 			comments();
+			spriteCount+=1;
+ 			animate();
+ 			$("#wordsGuessed").show();
+ 			$("#wordsGuessed").find("ul").append("<li id='letter' class='active'>"+ guess +"</li>");
+ 		} else {
+ 			comments();
+ 			}
+	}
+}//handlekeyup
+
 var words= [];
 
 function getWords(settings) {
 	$.ajax({
-  	url: 'http://localhost:8080/words',
+  	url: 'https://hangman-words.herokuapp.com/words',
   	method: 'post',
   	data: settings
 	})
@@ -77,12 +107,12 @@ function getWords(settings) {
 
 
   var word ;              // Selected word
-  var guess ;             // Geuss
-  var geusses = [ ];      // Stored geusses
+  var guess ;             // Guess
+  var guesses = [ ];      // Stored guesses
   var lives ;             // Lives
-  var counter ;           // Count correct geusses
+  var counter ;           // Count correct guesses
   var space;              // Number of spaces in word '-'
-
+  var spriteCount = 0;
   // Get elements
   var showLives = document.getElementById("mylives");
 
@@ -121,7 +151,7 @@ function getWords(settings) {
         guess.innerHTML = "_";
       }
 
-      geusses.push(guess);
+      guesses.push(guess);
       wordHolder.appendChild(correct);
       correct.appendChild(guess);
     }
@@ -130,6 +160,7 @@ function getWords(settings) {
   // Show lives
    comments = function () {
    	// all games played show stats
+		var showLives = document.getElementById("mylives");
     showLives.innerHTML = "You have " + lives + " incorrect guesses left.";
     if (lives < 1 && words.length === 0) {
       document.body.innerHTML = '';
@@ -140,100 +171,106 @@ function getWords(settings) {
     }
 
 
-    for (var i = 0; i < geusses.length; i++) {
-      if (counter + space === geusses.length) {
+    for (var i = 0; i < guesses.length; i++) {
+      if (counter + space === guesses.length) {
         showLives.innerHTML = "You Win!";
       }
     }
   }
 
       // Animate man
-  var animate = function () {
-    var drawMe = lives ;
-    drawArray[drawMe]();
+  // var animate = function () {
+  //   var drawMe = lives ;
+  //   drawArray[drawMe]();
+  // }
+	var animate = function () {
+		console.log(spriteCount+" CURRENT # OF LIVES");
+		var pos=(spriteCount*-75) +"px"
+			$('#hangman').css("left",pos);
+
   }
 
-
    // Hangman
-  canvas =  function(){
-
-    myStickman = document.getElementById("stickman");
-    context = myStickman.getContext('2d');
-    context.beginPath();
-    context.strokeStyle = '#ea5b3f';
-    context.lineWidth = 4;
-  };
-
-    head = function(){
-      myStickman = document.getElementById("stickman");
-      context = myStickman.getContext('2d');
-      context.beginPath();
-      context.arc(60, 25, 10, 0, Math.PI*2, true);
-      context.stroke();
-    }
-
-  draw = function($pathFromx, $pathFromy, $pathTox, $pathToy) {
-
-    context.moveTo($pathFromx, $pathFromy);
-    context.lineTo($pathTox, $pathToy);
-    context.stroke();
-}
-
-   frame1 = function() {
-     draw (0, 150, 150, 150);
-   };
-
-   frame2 = function() {
-     draw (10, 0, 10, 600);
-   };
-
-   frame3 = function() {
-     draw (0, 5, 70, 5);
-   };
-
-   frame4 = function() {
-     draw (60, 5, 60, 15);
-   };
-
-   torso = function() {
-     draw (60, 36, 60, 70);
-   };
-
-   rightArm = function() {
-     draw (60, 46, 100, 50);
-   };
-
-   leftArm = function() {
-     draw (60, 46, 20, 50);
-   };
-
-   rightLeg = function() {
-     draw (60, 70, 100, 100);
-   };
-
-   leftLeg = function() {
-     draw (60, 70, 20, 100);
-   };
-
-  drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1];
+//   canvas =  function(){
+//
+//     myStickman = document.getElementById("stickman");
+//     context = myStickman.getContext('2d');
+//     context.beginPath();
+//     context.strokeStyle = '#ea5b3f';
+//     context.lineWidth = 4;
+//   };
+//
+//     head = function(){
+//       myStickman = document.getElementById("stickman");
+//       context = myStickman.getContext('2d');
+//       context.beginPath();
+//       context.arc(60, 25, 10, 0, Math.PI*2, true);
+//       context.stroke();
+//     }
+//
+//   draw = function($pathFromx, $pathFromy, $pathTox, $pathToy) {
+//
+//     context.moveTo($pathFromx, $pathFromy);
+//     context.lineTo($pathTox, $pathToy);
+//     context.stroke();
+// }
+//
+//    frame1 = function() {
+//      draw (0, 150, 150, 150);
+//    };
+//
+//    frame2 = function() {
+//      draw (10, 0, 10, 600);
+//    };
+//
+//    frame3 = function() {
+//      draw (0, 5, 70, 5);
+//    };
+//
+//    frame4 = function() {
+//      draw (60, 5, 60, 15);
+//    };
+//
+//    torso = function() {
+//      draw (60, 36, 60, 70);
+//    };
+//
+//    rightArm = function() {
+//      draw (60, 46, 100, 50);
+//    };
+//
+//    leftArm = function() {
+//      draw (60, 46, 20, 50);
+//    };
+//
+//    rightLeg = function() {
+//      draw (60, 70, 100, 100);
+//    };
+//
+//    leftLeg = function() {
+//      draw (60, 70, 20, 100);
+//    };
+//
+//   drawArray = [rightLeg, leftLeg, rightArm, leftArm,  torso,  head, frame4, frame3, frame2, frame1];
 
 
   // OnClick Function
    check = function () {
     list.onclick = function () {
-      var geuss = (this.innerHTML);
+      var guess = (this.innerHTML);
       this.setAttribute("class", "active");
       this.onclick = null;
       for (var i = 0; i < word.length; i++) {
-        if (word[i] === geuss) {
-          geusses[i].innerHTML = geuss;
+        if (word[i] === guess) {
+          guesses[i].innerHTML = guess;
           counter += 1;
         }
       }
-      var j = (word.indexOf(geuss));
+      var j = (word.indexOf(guess));
       if (j === -1) {
         lives -= 1;
         comments();
+				spriteCount+=1;
         animate();
         $("#wordsGuessed").show();
         $("#wordsGuessed").find("ul").append(this);
@@ -244,20 +281,45 @@ function getWords(settings) {
     }
   }
 
+	checkBySpeech = function (input) {
+
+ 		var guess = (input);
+
+ 		for (var i = 0; i < word.length; i++) {
+ 			if (word[i] === guess) {
+ 				guesses[i].innerHTML = guess;
+ 				counter += 1;
+ 			}
+ 		}
+ 		var j = (word.indexOf(guess));
+ 		if (j === -1) {
+ 			lives -= 1;
+ 			comments();
+			spriteCount+=1;
+ 			animate();
+ 			$("#wordsGuessed").show();
+ 			$("#wordsGuessed").find("ul").append("<li id='letter' class='active'>"+ guess +"</li>");
+ 		} else {
+ 			comments();
+
+ 		}
+
+ }
+
 
   // Play
    function gameInit(wordArray) {
-
+		$("#stickman").append('<div id="imgHolder"><img id="hangman" src="/assets/man.png"></div>')
     word = wordArray.pop();
     buttons();
 
-    geusses = [ ];
+    guesses = [ ];
     lives = 6;
     counter = 0;
     space = 0;
     result();
     comments();
-    canvas();
+    // canvas();
   }
 
 
