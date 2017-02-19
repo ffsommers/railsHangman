@@ -120,6 +120,8 @@ function getWords(settings) {
       letters.id = 'alphabet';
       list = document.createElement('li');
       list.id = 'letter';
+			list.class = 'hvr-push';
+			list.setAttribute("class", "hvr-push");
       list.innerHTML = alphabet[i];
       check();
       myButtons.appendChild(letters);

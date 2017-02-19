@@ -171,9 +171,7 @@ p{
 
 
 }
-#alphabet li:hover{
-	background-color:blue;
-}
+
 #wordsGuessed {
 	width:350px;
 	height: 100px;
