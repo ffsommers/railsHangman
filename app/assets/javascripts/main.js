@@ -251,8 +251,8 @@ $('#reset').on("click", function(){
 
  //firework animations for gameover
 function fireworks() {
-  var num_launchers = 12;
-  var num_flares = 20;
+  var num_launchers = 6;
+  var num_flares = 10;
   var flare_colours = ['red', 'aqua', 'violet', 'yellow', 'lightgreen', 'white', 'blue'];
   var cssIdx = document.styleSheets.length - 1;
 
