@@ -160,6 +160,7 @@ function getWords(settings) {
 			showLives.innerHTML = "Game Over";
 			$(".tumbleweed").css("animation-play-state", "running")
  			console.log("PLAY AGAIN!");
+			$("#statsModal").modal('show')
 			$("#reset").show();
     }
 		else {
