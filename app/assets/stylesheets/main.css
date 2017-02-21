@@ -24,6 +24,20 @@
  color: white;
  text-align: center;
 }
+#formContainer label{
+  font-weight: bold;
+}
+#formContainer select{
+  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight:bold;
+
+}
+#formContainer button{
+  height:30px;
+  font-size:18px;
+  font-weight: bold;
+}
 #play{
   width:100%;
   text-align: center;
@@ -81,11 +95,11 @@
 
 #footer-bg .tumbleweed {
   position:absolute;
-  left: -5rem;
+  /*left: -5rem;*/
   background: url(/assets/tumbleweed.png) no-repeat center;
   background-size: cover;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   animation: jumping 1.5s infinite, rolling 5s linear infinite, rotating 2s linear infinite;
   animation-play-state: paused;
 
