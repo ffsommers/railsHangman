@@ -167,9 +167,10 @@ function getWords(settings) {
       	if (counter + space === guesses.length) {
         	showLives.innerHTML = "You Win!";
 					wins += 1;
+
 					fireworks() // plays fireworks animation
 					$("#score").show();
-					$("#score").find("ul").append("<li><img class='star' src='/assets/Gold-Star.png'></li>");
+					$("#score").find("ul").append("<li><img class='star' src='/assets/Gold-Star.png'></li>").addClass('animated zoomIn');
 					guesses = [ ]; //reset game global variables for guesses.
 					lives = 6;		 //reset game global variables for lives.
 					counter = 0;	 //reset game global variables for counter.
@@ -192,10 +193,12 @@ function getWords(settings) {
 	}
 
 	function clearBoard(){
+		$("#score").find("ul").removeClass('animated zoomIn');
 		$("#buttons").html(" ");      //clears buttons div for next game
 		$("#hold").html(" "); 	      //clears hold div for next game
 		$("#myLives").html(" ");      //clears myLives div for next game
 		$("#stickman").html(" ");     //clears hangman drawing for next game
+		$("#wordsGuessed").hide();
 		$("#wordsGuessed").find("ul").html(" "); //clears letters guessed div for next game
 		$(".launcher").remove();      //stops fireworks animation for next game
 	}
