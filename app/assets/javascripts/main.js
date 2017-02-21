@@ -154,7 +154,7 @@ function getWords(settings) {
    	// all games played show stats
 		var showLives = document.getElementById("mylives");
     showLives.innerHTML = "You have " + lives + " incorrect guesses left.";
-    if (lives < 1 && words.length === 0) {
+    if (lives < 1) {
 			showLives.innerHTML = "Game Over";
 			$(".tumbleweed").css("animation-play-state", "running")
  			console.log("PLAY AGAIN!");
@@ -164,15 +164,20 @@ function getWords(settings) {
       if (counter + space === guesses.length) {
         showLives.innerHTML = "You Win!";
 				fireworks() // plays fireworks animation
-				setTimeout(nextGame,10000); //waits 10 seconds before starting next game
-      }
+				// setTimeout(nextGame,10000); //waits 10 seconds before starting next game
+				nextGameDelay()
+			}
     }
   }
+
+	function nextGameDelay() {
+		setTimeout(nextGame, 10000);
+	}
 
 	function nextGame(){
 		if (words.length > 0) {
 			clearBoard();
-			gameInit(words);
+			continueGame(words.pop());
 		}
 	}
 
@@ -183,9 +188,6 @@ function getWords(settings) {
 		$("#stickman").html(" ");     //clears hangman drawing for next game
 		$("#wordsGuessed").html(" "); //clears letters guessed div for next game
 		$(".launcher").remove();      //stops fireworks animation for next game
-
-
-
 	}
 
   // hangman animation
@@ -246,6 +248,20 @@ function getWords(settings) {
    function gameInit(wordArray) {
 	 	$("#stickman").append('<div id="imgHolder"><img id="hangman" src="/assets/man.png"></div>')
     word = wordArray.pop();
+		console.log("THE WORD IS "+word);
+    buttons();
+    guesses = [ ];
+    lives = 6;
+    counter = 0;
+    space = 0;
+    result();
+    comments();
+   }
+
+	 function continueGame(inputWord) {
+	 	$("#stickman").append('<div id="imgHolder"><img id="hangman" src="/assets/man.png"></div>')
+    word = inputWord;
+		console.log("INITIALIZED FROM continue GAME THE WORD IS "+word);
     buttons();
     guesses = [ ];
     lives = 6;
@@ -259,10 +275,8 @@ function getWords(settings) {
 
 // Reset game
 $('#reset').on("click", function(){
-	correct.parentNode.removeChild(correct);
-    letters.parentNode.removeChild(letters);
+	// CODE FOR BACK TO SETTINGS PAGE
 
-    gameInit(words);
 });
 
  //firework animations for gameover
