@@ -65,6 +65,7 @@ function handleKeyUp(event) {
  			lives -= 1;
  			comments();
 			spriteCount+=1;
+			numWrongGuesses += 1;
  			animate();
  			$("#wordsGuessed").show();
  			$("#wordsGuessed").find("ul").append("<li id='letter' class='active'>"+ guess +"</li>");
@@ -108,6 +109,8 @@ function getWords(settings) {
   var space;              // Number of spaces in word '-'
   var spriteCount = 0;
 	var wins = 0;
+	var numWrongGuesses = 0;
+
   // Get elements
   var showLives = document.getElementById("mylives");
 
@@ -159,7 +162,8 @@ function getWords(settings) {
     if (lives < 1) {
 			showLives.innerHTML = "Game Over";
 			$(".tumbleweed").css("animation-play-state", "running")
- 			console.log("PLAY AGAIN!");
+			$("#statsModal").find("#your-score").append( wins + " games");
+			$("#statsModal").find("#incorrect").append( numWrongGuesses + " incorrect letter guesses.");
 			$("#statsModal").modal('show')
 			$("#reset").show();
     }
@@ -175,7 +179,8 @@ function getWords(settings) {
 					guesses = [ ]; //reset game global variables for guesses.
 					lives = 6;		 //reset game global variables for lives.
 					counter = 0;	 //reset game global variables for counter.
-					space = 0;     //reset game global variables for spaces.
+					space = 0;
+					spriteCount = 0;     //reset game global variables for spaces.
 					nextGameDelay() // setTimeout(nextGame,10000); //waits 10 seconds before starting next game
 				}
     	}
@@ -206,7 +211,6 @@ function getWords(settings) {
 
   // hangman animation
 	var animate = function () {
-		console.log(spriteCount+" CURRENT # OF LIVES");
 		var pos=(spriteCount*-75) +"px"
 			$('#hangman').css("left",pos);
   }
@@ -227,8 +231,9 @@ function getWords(settings) {
       if (j === -1) {
         lives -= 1;
         comments();
-				spriteCount+=1;
+				spriteCount += 1;
         animate();
+				numWrongGuesses += 1;
         $("#wordsGuessed").show();
         $("#wordsGuessed").find("ul").append(this);
       } else {
@@ -250,6 +255,7 @@ function getWords(settings) {
  			lives -= 1;
  			comments();
 			spriteCount+=1;
+			numWrongGuesses += 1;
  			animate();
  			$("#wordsGuessed").show();
  			$("#wordsGuessed").find("ul").append("<li id='letter' class='active'>"+ guess +"</li>");
