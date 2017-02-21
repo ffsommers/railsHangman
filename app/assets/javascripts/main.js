@@ -20,8 +20,9 @@ $(document).ready(function(){
 	(function wait() {
     	if (words.length > 0 ) {
        		gameInit(words);
+					clearTimeout(waitForWords);
     	} else {
-        	setTimeout( wait, 500 );
+        var waitForWords =	setTimeout( wait, 500 );
     	}
 	})();
 });
@@ -160,14 +161,20 @@ function getWords(settings) {
  			console.log("PLAY AGAIN!");
 			$("#reset").show();
     }
-    for (var i = 0; i < guesses.length; i++) {
-      if (counter + space === guesses.length) {
-        showLives.innerHTML = "You Win!";
-				fireworks() // plays fireworks animation
+		else {
+    	for (var i = 0; i < guesses.length; i++) {
+      	if (counter + space === guesses.length) {
+        	showLives.innerHTML = "You Win!";
+					fireworks() // plays fireworks animation
 				// setTimeout(nextGame,10000); //waits 10 seconds before starting next game
-				nextGameDelay()
-			}
-    }
+					guesses = [ ]; //reset game global variables for guesses.
+					lives = 6;		 //reset game global variables for lives.
+					counter = 0;	 //reset game global variables for counter.
+					space = 0;     //reset game global variables for spaces.
+					nextGameDelay()
+				}
+    	}
+		}
   }
 
 	function nextGameDelay() {
@@ -263,10 +270,6 @@ function getWords(settings) {
     word = inputWord;
 		console.log("INITIALIZED FROM continue GAME THE WORD IS "+word);
     buttons();
-    guesses = [ ];
-    lives = 6;
-    counter = 0;
-    space = 0;
     result();
     comments();
    }
