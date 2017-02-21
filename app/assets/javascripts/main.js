@@ -169,7 +169,7 @@ function getWords(settings) {
 					wins += 1;
 					fireworks() // plays fireworks animation
 					$("#score").show();
-					$("#score").find("ul").html("<li>"+ wins + "</li>");
+					$("#score").find("ul").append("<li><img class='star' src='/assets/Gold-Star.png'></li>");
 					guesses = [ ]; //reset game global variables for guesses.
 					lives = 6;		 //reset game global variables for lives.
 					counter = 0;	 //reset game global variables for counter.
