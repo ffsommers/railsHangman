@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	var settings = {
 		difficulty: 1,
-		rounds: 1
 	};
 
 	$(document).on("keyup",handleKeyUp);  //for user input via keyboard
@@ -12,9 +11,9 @@ $(document).ready(function(){
 	$("#play").on("click", function(){
     	$("#formContainer").css("display", "none");
     	var gameDifficulty = $("#difficulty option:selected").val();
-    	var gameRounds = $("#rounds option:selected").val();
+    	// var gameRounds = $("#rounds option:selected").val();
     	settings.difficulty = gameDifficulty;
-    	settings.rounds = gameRounds;
+    	// settings.rounds = gameRounds;
      	getWords(settings);
  			startSpeech();
  	});
@@ -161,17 +160,11 @@ function getWords(settings) {
  			console.log("PLAY AGAIN!");
 			$("#reset").show();
     }
-     if (lives < 1) {
-      showLives.innerHTML = "Game Over";
-			console.log("lives less than one!");
-			$("#reset").show();
-    }
     for (var i = 0; i < guesses.length; i++) {
       if (counter + space === guesses.length) {
         showLives.innerHTML = "You Win!";
-				fireworks()
-				console.log("ABOUT TO PLAY NEXT GAME");
-				setTimeout(nextGame,10000);
+				fireworks() // plays fireworks animation
+				setTimeout(nextGame,10000); //waits 10 seconds before starting next game
       }
     }
   }
@@ -180,8 +173,6 @@ function getWords(settings) {
 		if (words.length > 0) {
 			clearBoard();
 			gameInit(words);
-		} else {
-			$("#reset").show();
 		}
 	}
 
