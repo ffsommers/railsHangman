@@ -158,19 +158,44 @@ function getWords(settings) {
     if (lives < 1 && words.length === 0) {
 			showLives.innerHTML = "Game Over";
 			$(".tumbleweed").css("animation-play-state", "running")
+ 			console.log("PLAY AGAIN!");
 			$("#reset").show();
     }
      if (lives < 1) {
       showLives.innerHTML = "Game Over";
-      $("#reset").show();
+			console.log("lives less than one!");
+			$("#reset").show();
     }
     for (var i = 0; i < guesses.length; i++) {
       if (counter + space === guesses.length) {
         showLives.innerHTML = "You Win!";
 				fireworks()
+				console.log("ABOUT TO PLAY NEXT GAME");
+				setTimeout(nextGame,10000);
       }
     }
   }
+
+	function nextGame(){
+		if (words.length > 0) {
+			clearBoard();
+			gameInit(words);
+		} else {
+			$("#reset").show();
+		}
+	}
+
+	function clearBoard(){
+		$("#buttons").html(" ");      //clears buttons div for next game
+		$("#hold").html(" "); 	      //clears hold div for next game
+		$("#myLives").html(" ");      //clears myLives div for next game
+		$("#stickman").html(" ");     //clears hangman drawing for next game
+		$("#wordsGuessed").html(" "); //clears letters guessed div for next game
+		$(".launcher").remove();      //stops fireworks animation for next game
+
+
+
+	}
 
   // hangman animation
 	var animate = function () {
@@ -245,7 +270,7 @@ function getWords(settings) {
 $('#reset').on("click", function(){
 	correct.parentNode.removeChild(correct);
     letters.parentNode.removeChild(letters);
-    context.clearRect(0, 0, 400, 400);
+
     gameInit(words);
 });
 
