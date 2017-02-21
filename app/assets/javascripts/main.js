@@ -193,7 +193,7 @@ function getWords(settings) {
 		$("#hold").html(" "); 	      //clears hold div for next game
 		$("#myLives").html(" ");      //clears myLives div for next game
 		$("#stickman").html(" ");     //clears hangman drawing for next game
-		$("#wordsGuessed").html(" "); //clears letters guessed div for next game
+		$("#wordsGuessed").find("ul").html(" "); //clears letters guessed div for next game
 		$(".launcher").remove();      //stops fireworks animation for next game
 	}
 
