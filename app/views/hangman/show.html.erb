@@ -1,0 +1,8 @@
+<body>
+  <h1 class= "ldr-title"> Leader Board </h1>
+  <ol class="top-scores">
+    <% @top_scores.each do |score| %>
+    <li class="ldr-name"> score.username </li>
+    <%end%>
+  </ol>
+</body>

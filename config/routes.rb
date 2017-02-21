@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :hangman
   get 'login' => 'sessions#new'
   resources :sessions
-  get 'board' => 'hangman#show'
+  post 'scores' => 'hangman#scores'
   post 'login' => 'sessions#create'
 
   delete 'logout' => 'sessions#destroy'

@@ -168,7 +168,8 @@ function getWords(settings) {
     showLives.innerHTML = "You have " + lives + " incorrect guesses left.";
     if (lives < 1) {
 			showLives.innerHTML = "Game Over";
-			$(".tumbleweed").css("animation-play-state", "running")
+			$(".tumbleweed").css("animation-play-state", "running");
+			sendResults();
 			$("#statsModal").find("#your-score").append( wins + " games");
 			$("#statsModal").find("#incorrect").append( numWrongGuesses + " incorrect letter guesses.");
 			$("#statsModal").modal('show')
@@ -248,7 +249,17 @@ function getWords(settings) {
       }
     }
   }
-
+  function sendResults(){
+		console.log("AJAXING THAT SHIT");
+		scores = {
+			top_score: wins
+		}
+		$.ajax({
+	  	url: '/scores',
+	  	method: 'post',
+	  	data: scores
+		});
+	}
 	checkBySpeech = function (input) {
  		var guess = (input);
  		for (var i = 0; i < word.length; i++) {
