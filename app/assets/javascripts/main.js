@@ -39,7 +39,8 @@ function startSpeech() {
   		console.log(event)
   	}
   recognition.addEventListener('result', e => {
-  	const transcript = Array.from(e.results)
+		console.log("transcript being formed");
+		const transcript = Array.from(e.results)
   		.map(result => result[0])
   		.map(result => result.transcript)
   		.join("")
@@ -161,6 +162,13 @@ function getWords(settings) {
     }
   }
 
+	function gameOver(){
+		$("#statsModal").find("#your-score").append( wins + " games");
+		$("#statsModal").find("#incorrect").append( numWrongGuesses + " incorrect letter guesses.");
+		$("#statsModal").modal('show')
+		$("#reset").show();
+	}
+
   // Show lives
    comments = function () {
    	// all games played show stats
@@ -170,10 +178,6 @@ function getWords(settings) {
 			showLives.innerHTML = "Game Over";
 			$(".tumbleweed").css("animation-play-state", "running");
 			sendResults();
-			$("#statsModal").find("#your-score").append( wins + " games");
-			$("#statsModal").find("#incorrect").append( numWrongGuesses + " incorrect letter guesses.");
-			$("#statsModal").modal('show')
-			$("#reset").show();
     }
 		else {
     	for (var i = 0; i < guesses.length; i++) {
@@ -250,7 +254,6 @@ function getWords(settings) {
     }
   }
   function sendResults(){
-		console.log("AJAXING THAT SHIT");
 		scores = {
 			top_score: wins
 		}
@@ -258,7 +261,10 @@ function getWords(settings) {
 	  	url: '/scores',
 	  	method: 'post',
 	  	data: scores
-		});
+		})
+			.done(function(){
+				gameOver();
+			})
 	}
 	checkBySpeech = function (input) {
  		var guess = (input);
