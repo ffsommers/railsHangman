@@ -1,6 +1,11 @@
 <div class="container">
   <div class = "row">
     <div class="col-lg-6 col-lg-offset-3">
+      <div class="left-container">
+        <div class="logo-landing">
+
+        </div>
+      </div>
       <h1>Register</h1>
       <%= form_for @user do |f| %>
         <% if @user.errors.any? %>
@@ -20,6 +25,7 @@
         <%= f.text_field :username, :placeholder => "Username", :class => "form-control" %><br>
         <%= f.email_field :email, :placeholder => "Email", :class => "form-control" %><br>
         <%= f.password_field :password, :placeholder => "Password", :class => "form-control" %><br>
+        <br><br>
         <%= f.submit "Register", :class => "btn btn-default" %>
       <% end %>
     </div>

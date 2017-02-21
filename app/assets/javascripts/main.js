@@ -3,6 +3,12 @@ $(document).ready(function(){
 		difficulty: 1,
 	};
 
+	$("#spotify-toggle").on("click", function(){
+
+	      $("#spotify").slideDown(350);
+	      $("#spotify-toggle").hide()
+	   });
+
 	$(document).on("keyup",handleKeyUp);  //for user input via keyboard
 
   $("#wordsGuessed").css("display", "none");
@@ -91,6 +97,7 @@ function getWords(settings) {
 
 	})
 }
+
 
 
 // _______________________________________
