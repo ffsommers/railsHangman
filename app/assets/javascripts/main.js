@@ -46,7 +46,7 @@ function startSpeech() {
   		.join("")
 
   		if (transcript.includes('letter')){
-				var letter = transcript.slice(-1)
+				var letter = transcript.slice(-1).toLowerCase();
 				checkBySpeech(letter)
   		}
 			// prints everything thats said to console.
