@@ -107,6 +107,7 @@ function getWords(settings) {
   var counter ;           // Count correct guesses
   var space;              // Number of spaces in word '-'
   var spriteCount = 0;
+	var wins = 0;
   // Get elements
   var showLives = document.getElementById("mylives");
 
@@ -165,13 +166,15 @@ function getWords(settings) {
     	for (var i = 0; i < guesses.length; i++) {
       	if (counter + space === guesses.length) {
         	showLives.innerHTML = "You Win!";
+					wins += 1;
 					fireworks() // plays fireworks animation
-				// setTimeout(nextGame,10000); //waits 10 seconds before starting next game
+					$("#score").show();
+					$("#score").find("ul").html("<li>"+ wins + "</li>");
 					guesses = [ ]; //reset game global variables for guesses.
 					lives = 6;		 //reset game global variables for lives.
 					counter = 0;	 //reset game global variables for counter.
 					space = 0;     //reset game global variables for spaces.
-					nextGameDelay()
+					nextGameDelay() // setTimeout(nextGame,10000); //waits 10 seconds before starting next game
 				}
     	}
 		}
