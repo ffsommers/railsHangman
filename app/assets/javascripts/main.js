@@ -12,25 +12,30 @@ $( document ).on('turbolinks:load', function() {
 
 
 
-	$("#play").on("click", function(){
-  	$("#formContainer").css("display", "none");
-    var gameDifficulty = $("#difficulty option:selected").val();
-    settings.difficulty = gameDifficulty;
-    getWords(settings);
- 		startSpeech();
- 	});
 
-	(function wait() {	// waits for getWords to fetch array of words from linkedIn word api
-  	if (words.length > 0 ) {
-			var firstWord = words.pop()
-			wordCheck(firstWord);
-			clearTimeout(waitForWords);
-    }
-		else {
-    	var waitForWords =	setTimeout( wait, 500 );
-    }
-	})();
+
+
 });  //closes document.ready
+function playButtonListener() {
+	$("#play").on("click", function(){
+		$("#formContainer").css("display", "none");
+		var gameDifficulty = $("#difficulty option:selected").val();
+		settings.difficulty = gameDifficulty;
+		getWords(settings);
+		startSpeech();
+		(function wait() {	// waits for getWords to fetch array of words from linkedIn word api
+			if (words.length > 0 ) {
+				var firstWord = words.pop()
+				wordCheck(firstWord);
+				clearTimeout(waitForWords);
+			}
+			else {
+				var waitForWords =	setTimeout( wait, 500 );
+			}
+		})();
+	});
+}
+
 
 function startSpeech() { // speech recognition for game play via speech
   var recognition = new webkitSpeechRecognition();
