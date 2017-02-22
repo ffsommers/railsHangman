@@ -1,5 +1,5 @@
 <body>
-  <h1>LEADER BOARD</h1>
+  <h1 id="leader-header">LEADER BOARD</h1>
   <ol id="leader-list">
     <%@leaders.each do|leader|%>
       <li class="leader"> <%=leader.username %> SCORE: <%=leader.top_score%> </li>

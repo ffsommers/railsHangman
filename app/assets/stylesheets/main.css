@@ -391,6 +391,17 @@ p{
   -moz-transform-origin: 0 0;
 }
 
+#leader-header {
+  margin: auto;
+  width: 65%;
+  margin-bottom: 20px;
+  border-bottom: solid white 2px;
+}
+
+#leader-list {
+  margin: 0 auto;
+  width: 70%;
+}
 .leader {
     font-size:20px;
     font-weight:bold;
