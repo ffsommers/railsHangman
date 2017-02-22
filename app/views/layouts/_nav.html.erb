@@ -1,5 +1,5 @@
 <div class= "nav">
-<% if current_user %>
+<% if current_user && current_page?(games_path)%>
   <%= current_user.username %> | <%= link_to "Logout", logout_path,:method => :delete  %>
   <div id="spotify" style="display:none; ">
     <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="200" height="100" frameborder="0" allowtransparency="true"></iframe>
@@ -10,7 +10,25 @@
       <span class="glyphicon glyphicon-music"></span>Music
     </button>
   </div>
-  <% else %>
+ <% end %>
+  <% if current_user && current_page?(leaders_path)%>
+    <%= current_user.username %> | <%= link_to "Logout", logout_path,:method => :delete  %> | <%= link_to "back to game", games_path %>
+    <div id="spotify" style="display:none; ">
+      <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="200" height="100" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+
+    <div class="music">
+      <button type="button" class="btn btn-default btn-md" id="spotify-toggle">
+        <span class="glyphicon glyphicon-music"></span>Music
+      </button>
+    </div>
+    <%end%>
+
+
+
+
+
+  <% if !current_user %>
   <%=  link_to "Register", signup_path, :id => "Register" %> | <%= link_to "Sign In", login_path  %>
 
 <% end %>

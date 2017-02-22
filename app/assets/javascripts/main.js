@@ -10,7 +10,6 @@ $(document).ready(function(){
 
 	$(document).on("keyup",handleKeyUp);  //intiatiates keyboard Listener for user input via keyboard
 
-  $("#wordsGuessed").css("display", "none");
  	$("#reset").css("display", "none");
 
 	$("#play").on("click", function(){
