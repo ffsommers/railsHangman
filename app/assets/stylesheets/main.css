@@ -390,3 +390,8 @@ p{
   -webkit-transform-origin: 0 0;
   -moz-transform-origin: 0 0;
 }
+
+.leader:nth-child(odd) {
+  background: #9ea6b2;
+
+}
