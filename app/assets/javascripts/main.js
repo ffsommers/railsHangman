@@ -116,6 +116,7 @@ function oxford(input){
 		})
 		.done(function(response){
 			console.log(response.lexical_entries[0].entries[0].senses[0].definitions[0]);
+			responsiveVoice.speak(response.lexical_entries[0].entries[0].senses[0].definitions[0])
 		})
 
 }
@@ -338,17 +339,6 @@ function getWords(settings) {
     result();
     comments();
    }
-
-	 function continueGame(inputWord) {
-	 	$("#stickman").append('<div id="imgHolder"><img id="hangman" src="/assets/man.png"></div>')
-    word = inputWord;
-		oxford(word)
-		console.log("THE WORD IS "+word);
-    buttons();
-    result();
-    comments();
-   }
-
 
 
 // Reset game
