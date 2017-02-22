@@ -7,8 +7,8 @@ $( document ).on('turbolinks:load', function() {
 	      $("#spotify").slideDown(350);
 	      $("#spotify-toggle").hide()
 	});
+		playButtonListener()
 
-	$(document).on("keyup",handleKeyUp);  //intiatiates keyboard Listener for user input via keyboard
 
 
 
@@ -19,6 +19,7 @@ $( document ).on('turbolinks:load', function() {
 function playButtonListener() {
 	$("#play").on("click", function(){
 		$("#formContainer").css("display", "none");
+			$(document).on("keyup",handleKeyUp);  //intiatiates keyboard Listener for user input via keyboard
 		var gameDifficulty = $("#difficulty option:selected").val();
 		settings.difficulty = gameDifficulty;
 		getWords(settings);
