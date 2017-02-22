@@ -1,19 +1,9 @@
 $( document ).on('turbolinks:load', function() {
-
-
-	$("#spotify-toggle").on("click", function(){
-	      $("#spotify").slideDown(350);
-	      $("#spotify-toggle").hide()
-	});
-		playButtonListener()
-
-
-
-
-
-
-
+	playButtonListener()
+	musicButtonListener()
 });  //closes document.ready
+
+
 function playButtonListener() {
 	var settings = {
 		difficulty: 1,
@@ -35,6 +25,12 @@ function playButtonListener() {
 				var waitForWords =	setTimeout( wait, 500 );
 			}
 		})();
+	});
+}
+function musicButtonListener() {
+	$("#spotify-toggle").on("click", function(){
+				$("#spotify").slideDown(350);
+				$("#spotify-toggle").hide()
 	});
 }
 
