@@ -391,7 +391,11 @@ p{
   -moz-transform-origin: 0 0;
 }
 
+.leader {
+    font-size:20px;
+    font-weight:bold;
+}
+
 .leader:nth-child(odd) {
   background: #9ea6b2;
-
 }
