@@ -15,5 +15,9 @@ class ApplicationController < ActionController::Base
     return client.entry_definitions(word)
   end
 
+  def avatar(email)
+
+  end  
+
   protect_from_forgery with: :exception
 end
