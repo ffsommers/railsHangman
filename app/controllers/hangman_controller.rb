@@ -1,5 +1,5 @@
 class HangmanController < ApplicationController
-  include OxfordApiHelper
+  # include OxfordApiHelper
 
   def index
     @user = User.find(current_user.id)
