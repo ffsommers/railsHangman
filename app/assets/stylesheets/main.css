@@ -90,7 +90,7 @@
 #guesses-options{
   margin-left: 170px;
   float: left;
-  
+
   margin-bottom:10px;
 }
 #reset-btn{
@@ -201,7 +201,6 @@ body {
 }
 
 .wrappper{
-  @include clear;
   width:100%;
   margin:0 auto;
 }
@@ -226,7 +225,6 @@ p{
 }
 
 #alphabet {
-  @include clear;
   margin:15px auto;
   padding:0;
   max-width:900px;
