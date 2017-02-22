@@ -35,23 +35,24 @@ $(document).ready(function(){
 });
 // speech recognition
 function startSpeech() {
-	var recognition = new webkitSpeechRecognition();
-	recognition.onresult = function(event) {
-  		console.log(event)
-  	}
-  recognition.addEventListener('result', e => {
-		console.log("transcript being formed");
-		const transcript = Array.from(e.results)
-  		.map(result => result[0])
-  		.map(result => result.transcript)
-  		.join("")
+  var recognition = new webkitSpeechRecognition();
+  recognition.onresult = function (event) {
+    console.log(event);
+  };
+  recognition.addEventListener('result', function (e) {
+    console.log("transcript being formed");
+    var transcript = Array.from(e.results).map(function (result) {
+      return result[0];
+    }).map(function (result) {
+      return result.transcript;
+    }).join("");
 
-  		if (transcript.includes('letter')){
-				var letter = transcript.slice(-1).toLowerCase();
-				checkBySpeech(letter)
-  		}
-			// prints everything thats said to console.
-		 console.log(transcript);
+    if (transcript.includes('letter')) {
+      var letter = transcript.slice(-1).toLowerCase();
+      checkBySpeech(letter);
+    }
+    // prints everything thats said to console.
+    console.log(transcript);
   });
   recognition.addEventListener('end', recognition.start);
   recognition.start();
