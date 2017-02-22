@@ -1,21 +1,19 @@
-<div class="modal fade" id="statsModal" tabindex="-1" role="dialog"
-     aria-labelledby="myModalLabel" aria-hidden="true">
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <button type="button" class="close" data-dismiss="modal">
-             <span aria-hidden="true">&times;</span>
-             <span class="sr-only">Close</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel"><%=@user.username%>'s stats for this session</h4>
-        </div>
-        <div class="modal-body">
-            <span id="your-score"> you won </span>
-            <br><br>
-            <span id="incorrect"> you made  </span>
-            <%= link_to "Leader Board", leaders_path  %>
-
-        </div>
+<div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel"><%=@user.username%>'s stats for this session</h4>
+      </div>
+      <div class="modal-body">
+        <span id="your-score"> you won </span>
+        <br><br>
+        <span id="incorrect"> you made  </span>
+        <%= link_to "Leader Board", leaders_path  %>
       </div>
     </div>
   </div>
+</div>
