@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var settings = {
 		difficulty: 1,
 	};
-
+ // oxford();
 	$("#spotify-toggle").on("click", function(){
 
 	      $("#spotify").slideDown(350);
@@ -25,7 +25,8 @@ $(document).ready(function(){
  	});
 	(function wait() {
     	if (words.length > 0 ) {
-       		gameInit(words);
+				var firstWord= words.pop()
+					wordCheck(firstWord);
 					clearTimeout(waitForWords);
     	} else {
         var waitForWords =	setTimeout( wait, 500 );
@@ -83,6 +84,41 @@ function handleKeyUp(event) {
 }//handlekeyup
 
 var words= [];
+
+function wordCheck(input){
+	$.ajax({
+  	url: '/dictionary',
+  	method: 'post',
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify({word: input}),
+		statusCode: {
+        500: function() {
+					var nextWord = words.pop();
+					clearBoard();
+					wordCheck(nextWord);
+        }
+      }
+		})
+		.done(function(response){
+			gameInit(response.id);
+		})
+
+
+}
+//oxford dictionary api request for definition
+function oxford(input){
+
+	$.ajax({
+  	url: '/dictionary',
+  	method: 'post',
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify({word: input})
+		})
+		.done(function(response){
+			console.log(response.lexical_entries[0].entries[0].senses[0].definitions[0]);
+		})
+
+}
 
 function getWords(settings) {
 	$.ajax({
@@ -206,7 +242,7 @@ function getWords(settings) {
 	function nextGame(){
 		if (words.length > 0) {
 			clearBoard();
-			continueGame(words.pop());
+			wordCheck(words.pop());
 		}
 	}
 
@@ -289,10 +325,11 @@ function getWords(settings) {
  }
 
   // start game
-   function gameInit(wordArray) {
+   function gameInit(inputWord) {
 	 	$("#stickman").append('<div id="imgHolder"><img id="hangman" src="/assets/man.png"></div>')
-    word = wordArray.pop();
+    word = inputWord;
 		console.log("THE WORD IS "+word);
+		oxford(word)
     buttons();
     guesses = [ ];
     lives = 6;
@@ -305,7 +342,8 @@ function getWords(settings) {
 	 function continueGame(inputWord) {
 	 	$("#stickman").append('<div id="imgHolder"><img id="hangman" src="/assets/man.png"></div>')
     word = inputWord;
-		console.log("INITIALIZED FROM continue GAME THE WORD IS "+word);
+		oxford(word)
+		console.log("THE WORD IS "+word);
     buttons();
     result();
     comments();
