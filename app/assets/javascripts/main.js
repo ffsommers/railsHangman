@@ -1,7 +1,5 @@
 $( document ).on('turbolinks:load', function() {
-	var settings = {
-		difficulty: 1,
-	}
+
 
 	$("#spotify-toggle").on("click", function(){
 	      $("#spotify").slideDown(350);
@@ -17,6 +15,9 @@ $( document ).on('turbolinks:load', function() {
 
 });  //closes document.ready
 function playButtonListener() {
+	var settings = {
+		difficulty: 1,
+	}
 	$("#play").on("click", function(){
 		$("#formContainer").css("display", "none");
 			$(document).on("keyup",handleKeyUp);  //intiatiates keyboard Listener for user input via keyboard
