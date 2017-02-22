@@ -1,5 +1,6 @@
 class HangmanController < ApplicationController
   include OxfordApiHelper
+
   def index
     @user = User.find(current_user.id)
     @past_top_score = @user.top_score
@@ -8,18 +9,16 @@ class HangmanController < ApplicationController
       puts  @definition = definition(dictionary_params[:word])
       render json: @definition
     end
+
   end
-
-
 
   def scores
     @user = User.find(current_user.id)
     @past_top_score = @user.top_score
-    p post_params[:top_score]
+
     if post_params[:top_score ].to_i > @past_top_score
       @user.top_score = post_params[:top_score].to_i
       @user.save
-
     end
 
   end
@@ -27,10 +26,11 @@ class HangmanController < ApplicationController
 
 
   private
-  def post_params
-    params.permit(:top_score, :games_played)
-  end
-  def dictionary_params
-    params.permit(:word)
-  end
+    def post_params
+      params.permit(:top_score, :games_played)
+    end
+
+    def dictionary_params
+      params.permit(:word)
+    end
 end
