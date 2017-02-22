@@ -1,40 +1,39 @@
 $(document).ready(function(){
 	var settings = {
 		difficulty: 1,
-	};
- // oxford();
-	$("#spotify-toggle").on("click", function(){
+	}
 
+	$("#spotify-toggle").on("click", function(){
 	      $("#spotify").slideDown(350);
 	      $("#spotify-toggle").hide()
-	   });
+	});
 
-	$(document).on("keyup",handleKeyUp);  //for user input via keyboard
+	$(document).on("keyup",handleKeyUp);  //intiatiates keyboard Listener for user input via keyboard
 
   $("#wordsGuessed").css("display", "none");
  	$("#reset").css("display", "none");
 
 	$("#play").on("click", function(){
-    	$("#formContainer").css("display", "none");
-    	var gameDifficulty = $("#difficulty option:selected").val();
-    	// var gameRounds = $("#rounds option:selected").val();
-    	settings.difficulty = gameDifficulty;
-    	// settings.rounds = gameRounds;
-     	getWords(settings);
- 			startSpeech();
+  	$("#formContainer").css("display", "none");
+    var gameDifficulty = $("#difficulty option:selected").val();
+    settings.difficulty = gameDifficulty;
+    getWords(settings);
+ 		startSpeech();
  	});
-	(function wait() {
-    	if (words.length > 0 ) {
-				var firstWord= words.pop()
-					wordCheck(firstWord);
-					clearTimeout(waitForWords);
-    	} else {
-        var waitForWords =	setTimeout( wait, 500 );
-    	}
+
+	(function wait() {	// waits for getWords to fetch array of words from linkedIn word api
+  	if (words.length > 0 ) {
+			var firstWord = words.pop()
+			wordCheck(firstWord);
+			clearTimeout(waitForWords);
+    }
+		else {
+    	var waitForWords =	setTimeout( wait, 500 );
+    }
 	})();
-});
-// speech recognition
-function startSpeech() {
+});  //closes document.ready
+
+function startSpeech() { // speech recognition for game play via speech
   var recognition = new webkitSpeechRecognition();
   recognition.onresult = function (event) {
     console.log(event);
