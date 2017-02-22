@@ -1,4 +1,4 @@
-LOGO
+![Alt text](app/assets/images/logo2.png?raw=true)
 # HANGMAN 
   what the app is 
       - hangman game as a rails web app
