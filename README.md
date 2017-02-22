@@ -10,7 +10,7 @@ LOGO
       
 ## prereqs 
   * rails 5 installed on your system. 
-  * if you do not want to run the application locally you can play hang-man here(https://hang-in.herokuapp.com/)
+  * if you do not want to run the application locally you can play hang-man hosted online [here](https://hang-in.herokuapp.com/)
 
 ## Installation and Setup
   * clone the repositiory 
