@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$( document ).on('turbolinks:load', function() {
 	var settings = {
 		difficulty: 1,
 	}
@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 	$(document).on("keyup",handleKeyUp);  //intiatiates keyboard Listener for user input via keyboard
 
- 	$("#reset").css("display", "none");
+
 
 	$("#play").on("click", function(){
   	$("#formContainer").css("display", "none");
