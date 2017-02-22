@@ -342,12 +342,6 @@ function getWords(settings) {
    }
 
 
-// Reset game
-$('#reset').on("click", function(){
-	// CODE FOR BACK TO SETTINGS PAGE
-
-});
-
  //firework animations for gameover
 function fireworks() {
   var num_launchers = 6;
