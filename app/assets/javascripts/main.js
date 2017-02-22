@@ -27,6 +27,7 @@ function playButtonListener() {
 		})();
 	});
 }
+
 function musicButtonListener() {
 	$("#spotify-toggle").on("click", function(){
 				$("#spotify").slideDown(350);
@@ -34,14 +35,12 @@ function musicButtonListener() {
 	});
 }
 
-
 function startSpeech() { // speech recognition for game play via speech
   var recognition = new webkitSpeechRecognition();
   recognition.onresult = function (event) {
     console.log(event);
   };
   recognition.addEventListener('result', function (e) {
-    console.log("transcript being formed");
     var transcript = Array.from(e.results).map(function (result) {
       return result[0];
     }).map(function (result) {
