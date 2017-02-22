@@ -1,4 +1,7 @@
 <div class= "nav">
+<% if !current_user %>
+  <%=  link_to "Register", signup_path, :id => "Register" %> | <%= link_to "Sign In", login_path  %>
+<% end %>
 <% if current_user && current_page?(games_path)%>
   <%= current_user.username %> | <%= link_to "Logout", logout_path,:method => :delete  %>
   <div id="spotify" style="display:none; ">
@@ -28,8 +31,5 @@
 
 
 
-  <% if !current_user %>
-  <%=  link_to "Register", signup_path, :id => "Register" %> | <%= link_to "Sign In", login_path  %>
 
-<% end %>
 </div>

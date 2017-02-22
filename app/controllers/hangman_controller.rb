@@ -4,7 +4,11 @@ class HangmanController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @past_top_score = @user.top_score
-
+    # puts avatar('ssommers21@gmail.com')
+    if @user.avatar = ""
+      @user.avatar = avatar(@user.email)
+      @user.save
+    end
     if request.xhr?
       puts  @definition = definition(dictionary_params[:word])
       render json: @definition

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :dictionary
+  helper_method :avatar
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -16,8 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   def avatar(email)
-
-  end  
+    FullContact.configure do |config|
+    config.api_key = 'ade1d8a08a069aa9'
+    end
+    return FullContact.person(email: email).photos[0].url
+  end
 
   protect_from_forgery with: :exception
 end

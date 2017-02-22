@@ -18,12 +18,13 @@ ActiveRecord::Schema.define(version: 20170221052938) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
+    t.string   "avatar",          default: ""
     t.integer  "top_score",       default: 0
     t.integer  "games_played",    default: 0
     t.integer  "rank",            default: 0
     t.string   "password_digest"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
 end

@@ -2,7 +2,7 @@
   <h1 id="leader-header">LEADER BOARD</h1>
   <ol id="leader-list">
     <%@leaders.each do|leader|%>
-      <li class="leader"> <%=leader.username %> SCORE: <%=leader.top_score%> </li>
+      <li class="leader"><img src="<%=leader.avatar%>" height="42" width="42"> <%=leader.username %> SCORE: <%=leader.top_score%> </li>
     <%end%>
   </ol>
 </body>
