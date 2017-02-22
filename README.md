@@ -19,6 +19,7 @@
   6. run rails s 
   7. open browser and play game at http://localhost:8080 
   *NOTE: you do not have to clone and run the words server because this app is already set up with the request for new  words pointing to the express server [here](https://github.com/ffsommers/hangman_server/blob/master/server.js) that I hosted on Heroku. 
+
 ## game play
  * to play the game follow these steps:
   1. on the main page you will be prompted to register an account. enter your credentials and you will be directed to the main page of the game. 
