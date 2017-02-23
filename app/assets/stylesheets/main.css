@@ -391,6 +391,12 @@ p{
   -moz-transform-origin: 0 0;
 }
 
+#leader-header {
+  margin: auto;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+
 table {
     margin: auto;
     font-family: arial, sans-serif;
