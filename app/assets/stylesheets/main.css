@@ -394,7 +394,7 @@ p{
 table {
     margin: auto;
     font-family: arial, sans-serif;
-    width: 70%;
+    width: 50%;
 }
 
 td, th {
@@ -404,5 +404,5 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color:rgba(255,0,0,0.1);
+    background-color:rgba(255,0,0,0.2);
 }
