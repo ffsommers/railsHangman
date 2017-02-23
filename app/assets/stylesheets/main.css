@@ -396,7 +396,10 @@ table {
     font-family: arial, sans-serif;
     width: 50%;
 }
-
+th {
+  font-size: 26px;
+  font-weight: bold;
+}
 td, th {
 
     text-align: center;
