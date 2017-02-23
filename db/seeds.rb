@@ -5,11 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-    User.create(username: 'A-ROD', email: 'a@a.com', password:"test");
-# t.string  :username
-# t.string :email
-# t.string :avatar, :default => ""
-# t.integer :top_score, :default => 0
-# t.integer :games_played , :default => 0
-# t.integer :rank, :default => 0
-# t.string :password_digest
+    User.create(username: 'Blake', email: 'blakes@uber.com', password:"blake", top_score: 10);
+    User.create(username: 'Skip', email: 'ssommers21@gmail.com', password:"skip", top_score: 20);
+    User.create(username: 'Mom', email: 'adrienne@a3nstrategies.com ', password:"mom", top_score: 16);
+    User.create(username: 'Nick', email: 'nicholasreis@gmail.com', password:"nick", top_score: 7);
+    User.create(username: 'Kachi', email: 'kachi@dronedeploy.com ', password:"kachi", top_score: 4);
