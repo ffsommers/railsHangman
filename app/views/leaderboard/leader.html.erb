@@ -1,8 +1,17 @@
 <body>
   <h1 id="leader-header">LEADER BOARD</h1>
-  <ol id="leader-list">
+  <table border=0 CELLPADDING=0 CELLSPACING=0>
+    <tr>
+      <th></th>
+      <th>User Name</th>
+      <th>Score</th>
+    </tr>
     <%@leaders.each do|leader|%>
-      <li class="leader"><img src="<%=leader.avatar%>" height="42" width="42"> <%=leader.username %> SCORE: <%=leader.top_score%> </li>
+    <tr>
+      <td><img src="<%=leader.avatar%>" height="42" width="42"></td>
+      <td><%=leader.username %></td>
+      <td><%=leader.top_score%></td>
+    </tr>
     <%end%>
-  </ol>
+  </table>
 </body>
