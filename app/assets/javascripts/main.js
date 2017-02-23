@@ -1,6 +1,7 @@
 $( document ).on('turbolinks:load', function() {
 	playButtonListener()
 	musicButtonListener()
+	backButtonListener()
 });  //closes document.ready
 
 
@@ -337,6 +338,11 @@ function getWords(settings) {
     comments();
    }
 
+	function backButtonListener(){
+		$("#back").on("click", function(){
+			location.reload();
+		})
+	}
 
   //firework animations for gameover
 	function fireworks() {

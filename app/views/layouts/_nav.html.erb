@@ -15,7 +15,7 @@
   </div>
  <% end %>
   <% if current_user && current_page?(leaders_path)%>
-    <%= current_user.username %> | <%= link_to "Logout", logout_path,:method => :delete  %> | <%= link_to "back to game", games_path %>
+    <%= current_user.username %> | <%= link_to "Logout", logout_path,:method => :delete  %> | <%= link_to "back to game", games_path, id: "back" %>
     <div id="spotify" style="display:none; ">
       <iframe src="https://embed.spotify.com/?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="200" height="100" frameborder="0" allowtransparency="true"></iframe>
     </div>
