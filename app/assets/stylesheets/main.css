@@ -406,3 +406,4 @@ td, th {
 tr:nth-child(even) {
     background-color:rgba(255,0,0,0.2);
 }
+tr:hover {background-color: rgba(230,255,60,0.2)}
