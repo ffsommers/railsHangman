@@ -21,11 +21,14 @@ class ApplicationController < ActionController::Base
     FullContact.configure do |config|
     config.api_key = 'ade1d8a08a069aa9'
     end
-     return FullContact.person(email: email).photos[0].url
-     rescue FullContact::NotFound
-       return "http://s3.amazonaws.com/nvest/Blank_Club_Website_Avatar_Gray.jpg"
-
-
+    begin
+     FullContact.person(email: email).photos[0].url
+    rescue
+      puts "no social media found for email"
+      return "http://s3.amazonaws.com/nvest/Blank_Club_Website_Avatar_Gray.jpg"
+    else
+      return FullContact.person(email: email).photos[0].url
+    end
   end
 
   def cloudinary_auth(img)
@@ -34,7 +37,6 @@ class ApplicationController < ActionController::Base
     api_key:    "876464412757527",
     api_secret: "MmL-MIUrtuJ3h51fjRcgHZyM0lI"
     }
-
     Cloudinary::Uploader.upload(img, auth)
   end
 
